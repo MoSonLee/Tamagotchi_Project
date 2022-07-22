@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		772FC11C288AF5AD00995A63 /* UIVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772FC11B288AF5AD00995A63 /* UIVIew+Extension.swift */; };
+		772FC11E288AF91C00995A63 /* DamagotchiMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772FC11D288AF91C00995A63 /* DamagotchiMainViewController.swift */; };
+		772FC121288B207B00995A63 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 772FC120288B207B00995A63 /* Toast */; };
+		772FC127288B238400995A63 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 772FC126288B238400995A63 /* IQKeyboardManagerSwift */; };
 		77BC9B9E288AB00F0081E069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9B9D288AB00F0081E069 /* AppDelegate.swift */; };
 		77BC9BA0288AB00F0081E069 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9B9F288AB00F0081E069 /* SceneDelegate.swift */; };
 		77BC9BA7288AB00F0081E069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77BC9BA6288AB00F0081E069 /* Assets.xcassets */; };
@@ -23,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		772FC11B288AF5AD00995A63 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
+		772FC11D288AF91C00995A63 /* DamagotchiMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamagotchiMainViewController.swift; sourceTree = "<group>"; };
 		77BC9B9A288AB00F0081E069 /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77BC9B9D288AB00F0081E069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77BC9B9F288AB00F0081E069 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				772FC121288B207B00995A63 /* Toast in Frameworks */,
+				772FC127288B238400995A63 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +91,7 @@
 			children = (
 				77BC9BBC288AB2370081E069 /* DamagotchiInitialCollectionViewController.swift */,
 				77BC9BC8288ACA880081E069 /* PopUpViewController.swift */,
+				772FC11D288AF91C00995A63 /* DamagotchiMainViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -157,6 +164,10 @@
 			dependencies = (
 			);
 			name = Tamagotchi;
+			packageProductDependencies = (
+				772FC120288B207B00995A63 /* Toast */,
+				772FC126288B238400995A63 /* IQKeyboardManagerSwift */,
+			);
 			productName = Tamagotchi;
 			productReference = 77BC9B9A288AB00F0081E069 /* Tamagotchi.app */;
 			productType = "com.apple.product-type.application";
@@ -185,6 +196,10 @@
 				Base,
 			);
 			mainGroup = 77BC9B91288AB00F0081E069;
+			packageReferences = (
+				772FC11F288B207B00995A63 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				772FC125288B238400995A63 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = 77BC9B9B288AB00F0081E069 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -214,6 +229,7 @@
 			files = (
 				77BC9BBD288AB2370081E069 /* DamagotchiInitialCollectionViewController.swift in Sources */,
 				77BC9BC5288AC0C70081E069 /* UICollectionView+Extension.swift in Sources */,
+				772FC11E288AF91C00995A63 /* DamagotchiMainViewController.swift in Sources */,
 				77BC9B9E288AB00F0081E069 /* AppDelegate.swift in Sources */,
 				77BC9BC1288AB9910081E069 /* MainTamagotchiModel.swift in Sources */,
 				77BC9BBF288AB2630081E069 /* DamagotchiInitialCollectionViewCell.swift in Sources */,
@@ -430,6 +446,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		772FC11F288B207B00995A63 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		772FC125288B238400995A63 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		772FC120288B207B00995A63 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 772FC11F288B207B00995A63 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		772FC126288B238400995A63 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 772FC125288B238400995A63 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 77BC9B92288AB00F0081E069 /* Project object */;
 }

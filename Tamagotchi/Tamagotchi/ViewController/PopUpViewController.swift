@@ -29,7 +29,11 @@ class PopUpViewController: UIViewController {
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        
+        let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiMainViewController") as? DamagotchiMainViewController else { return }
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true)
     }
     
     func getImage() -> UIImage? {
@@ -44,14 +48,14 @@ class PopUpViewController: UIViewController {
     func setLayout() {
         popUpLabel.text =  UserDefaults.standard.string(forKey: "tamagotchiName")
         popUpLabel.textAlignment = .center
-        popUpLabel.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 255/255, alpha: 1)
+        popUpLabel.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
         popUpLabel.layer.borderWidth = 1
-        popUpDividerLabel.addTopBorderWithColor(color: .systemGray, width: 1)
-        popUpDividerLabel.text = ""
         popUpLabel.font = .preferredFont(forTextStyle: .callout, compatibleWith: .none)
         popUpLabel.layer.cornerRadius = 3
         popUpLabel.adjustsFontSizeToFitWidth = true
         popUpLabel.font = .systemFont(ofSize: 14)
+        popUpDividerLabel.addTopBorderWithColor(color: .systemGray, width: 1)
+        popUpDividerLabel.text = ""
         popUpDescriptionLabel.text =  UserDefaults.standard.string(forKey: "tamagochiDescription")
         popUpDescriptionLabel.numberOfLines = 0
         popUpDescriptionLabel.font = .preferredFont(forTextStyle: .callout, compatibleWith: nil)
