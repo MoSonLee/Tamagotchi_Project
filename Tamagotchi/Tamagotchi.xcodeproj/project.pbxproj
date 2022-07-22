@@ -7,23 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		772FC11C288AF5AD00995A63 /* UIVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772FC11B288AF5AD00995A63 /* UIVIew+Extension.swift */; };
 		77BC9B9E288AB00F0081E069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9B9D288AB00F0081E069 /* AppDelegate.swift */; };
 		77BC9BA0288AB00F0081E069 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9B9F288AB00F0081E069 /* SceneDelegate.swift */; };
-		77BC9BA2288AB00F0081E069 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9BA1288AB00F0081E069 /* ViewController.swift */; };
-		77BC9BA5288AB00F0081E069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77BC9BA3288AB00F0081E069 /* Main.storyboard */; };
 		77BC9BA7288AB00F0081E069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77BC9BA6288AB00F0081E069 /* Assets.xcassets */; };
 		77BC9BAA288AB00F0081E069 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77BC9BA8288AB00F0081E069 /* LaunchScreen.storyboard */; };
+		77BC9BBB288AB21F0081E069 /* DamagotchiInitialStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77BC9BBA288AB21F0081E069 /* DamagotchiInitialStoryboard.storyboard */; };
+		77BC9BBD288AB2370081E069 /* DamagotchiInitialCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9BBC288AB2370081E069 /* DamagotchiInitialCollectionViewController.swift */; };
+		77BC9BBF288AB2630081E069 /* DamagotchiInitialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9BBE288AB2630081E069 /* DamagotchiInitialCollectionViewCell.swift */; };
+		77BC9BC1288AB9910081E069 /* MainTamagotchiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9BC0288AB9910081E069 /* MainTamagotchiModel.swift */; };
+		77BC9BC3288AB9C80081E069 /* TamagotchiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9BC2288AB9C80081E069 /* TamagotchiModel.swift */; };
+		77BC9BC5288AC0C70081E069 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9BC4288AC0C70081E069 /* UICollectionView+Extension.swift */; };
+		77BC9BC9288ACA880081E069 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9BC8288ACA880081E069 /* PopUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		772FC11B288AF5AD00995A63 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
 		77BC9B9A288AB00F0081E069 /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77BC9B9D288AB00F0081E069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77BC9B9F288AB00F0081E069 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		77BC9BA1288AB00F0081E069 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		77BC9BA4288AB00F0081E069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		77BC9BA6288AB00F0081E069 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77BC9BA9288AB00F0081E069 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77BC9BAB288AB00F0081E069 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77BC9BBA288AB21F0081E069 /* DamagotchiInitialStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DamagotchiInitialStoryboard.storyboard; sourceTree = "<group>"; };
+		77BC9BBC288AB2370081E069 /* DamagotchiInitialCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamagotchiInitialCollectionViewController.swift; sourceTree = "<group>"; };
+		77BC9BBE288AB2630081E069 /* DamagotchiInitialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamagotchiInitialCollectionViewCell.swift; sourceTree = "<group>"; };
+		77BC9BC0288AB9910081E069 /* MainTamagotchiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTamagotchiModel.swift; sourceTree = "<group>"; };
+		77BC9BC2288AB9C80081E069 /* TamagotchiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiModel.swift; sourceTree = "<group>"; };
+		77BC9BC4288AC0C70081E069 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		77BC9BC8288ACA880081E069 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,77 @@
 		77BC9B9C288AB00F0081E069 /* Tamagotchi */ = {
 			isa = PBXGroup;
 			children = (
-				77BC9B9D288AB00F0081E069 /* AppDelegate.swift */,
-				77BC9B9F288AB00F0081E069 /* SceneDelegate.swift */,
-				77BC9BA1288AB00F0081E069 /* ViewController.swift */,
-				77BC9BA3288AB00F0081E069 /* Main.storyboard */,
-				77BC9BA6288AB00F0081E069 /* Assets.xcassets */,
-				77BC9BA8288AB00F0081E069 /* LaunchScreen.storyboard */,
 				77BC9BAB288AB00F0081E069 /* Info.plist */,
+				77BC9BB2288AB0440081E069 /* Application */,
+				77BC9BB7288AB0700081E069 /* View */,
+				77BC9BB1288AB03A0081E069 /* ViewController */,
+				77BC9BB4288AB0540081E069 /* ViewCell */,
+				77BC9BB3288AB04D0081E069 /* Model */,
+				77BC9BB5288AB0590081E069 /* Extensions */,
+				77BC9BB6288AB0600081E069 /* Assests */,
 			);
 			path = Tamagotchi;
+			sourceTree = "<group>";
+		};
+		77BC9BB1288AB03A0081E069 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				77BC9BBC288AB2370081E069 /* DamagotchiInitialCollectionViewController.swift */,
+				77BC9BC8288ACA880081E069 /* PopUpViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		77BC9BB2288AB0440081E069 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				77BC9B9D288AB00F0081E069 /* AppDelegate.swift */,
+				77BC9B9F288AB00F0081E069 /* SceneDelegate.swift */,
+				77BC9BA8288AB00F0081E069 /* LaunchScreen.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		77BC9BB3288AB04D0081E069 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				77BC9BC0288AB9910081E069 /* MainTamagotchiModel.swift */,
+				77BC9BC2288AB9C80081E069 /* TamagotchiModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		77BC9BB4288AB0540081E069 /* ViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				77BC9BBE288AB2630081E069 /* DamagotchiInitialCollectionViewCell.swift */,
+			);
+			path = ViewCell;
+			sourceTree = "<group>";
+		};
+		77BC9BB5288AB0590081E069 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				77BC9BC4288AC0C70081E069 /* UICollectionView+Extension.swift */,
+				772FC11B288AF5AD00995A63 /* UIVIew+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		77BC9BB6288AB0600081E069 /* Assests */ = {
+			isa = PBXGroup;
+			children = (
+				77BC9BA6288AB00F0081E069 /* Assets.xcassets */,
+			);
+			path = Assests;
+			sourceTree = "<group>";
+		};
+		77BC9BB7288AB0700081E069 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				77BC9BBA288AB21F0081E069 /* DamagotchiInitialStoryboard.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,8 +200,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				77BC9BAA288AB00F0081E069 /* LaunchScreen.storyboard in Resources */,
+				77BC9BBB288AB21F0081E069 /* DamagotchiInitialStoryboard.storyboard in Resources */,
 				77BC9BA7288AB00F0081E069 /* Assets.xcassets in Resources */,
-				77BC9BA5288AB00F0081E069 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +212,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77BC9BA2288AB00F0081E069 /* ViewController.swift in Sources */,
+				77BC9BBD288AB2370081E069 /* DamagotchiInitialCollectionViewController.swift in Sources */,
+				77BC9BC5288AC0C70081E069 /* UICollectionView+Extension.swift in Sources */,
 				77BC9B9E288AB00F0081E069 /* AppDelegate.swift in Sources */,
+				77BC9BC1288AB9910081E069 /* MainTamagotchiModel.swift in Sources */,
+				77BC9BBF288AB2630081E069 /* DamagotchiInitialCollectionViewCell.swift in Sources */,
+				77BC9BC3288AB9C80081E069 /* TamagotchiModel.swift in Sources */,
 				77BC9BA0288AB00F0081E069 /* SceneDelegate.swift in Sources */,
+				77BC9BC9288ACA880081E069 /* PopUpViewController.swift in Sources */,
+				772FC11C288AF5AD00995A63 /* UIVIew+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		77BC9BA3288AB00F0081E069 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				77BC9BA4288AB00F0081E069 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		77BC9BA8288AB00F0081E069 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +364,7 @@
 				INFOPLIST_FILE = Tamagotchi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = DamagotchiInitialStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +392,7 @@
 				INFOPLIST_FILE = Tamagotchi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = DamagotchiInitialStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
