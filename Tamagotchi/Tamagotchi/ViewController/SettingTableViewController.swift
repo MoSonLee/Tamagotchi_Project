@@ -9,7 +9,6 @@ import UIKit
 import Toast
 
 class SettingTableViewController: UITableViewController {
-    
     let settingModel = Setting()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +17,7 @@ class SettingTableViewController: UITableViewController {
     
     @objc
     func dismissView() {
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -37,14 +36,16 @@ class SettingTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
+        if indexPath.row == 0 {
+            let storyboard = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "ChangeNameViewController") as? ChangeNameViewController else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 1 {
             let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
             guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else { return }
             self.navigationController?.navigationBar.tintColor = .black
-            
             self.navigationController?.pushViewController(vc, animated: true)
-        }
-        if indexPath.row == 2 {
+        } else if indexPath.row == 2 {
             let alert =  UIAlertController(title: "데이터초기화.", message: "정말 다시 처음부터 시작하실 건가용?", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "아니오", style: .default, handler: nil)
             let ok = UIAlertAction(title: "네", style: .default, handler: { _ in
@@ -64,10 +65,12 @@ class SettingTableViewController: UITableViewController {
     }
     
     func resetData() {
+        UserDefaults.standard.set(true, forKey: "init")
         UserDefaults.standard.removeObject(forKey: "level")
         UserDefaults.standard.removeObject(forKey: "rice")
         UserDefaults.standard.removeObject(forKey: "water")
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        UserDefaults.standard.removeObject(forKey: "nickname")
+        self.view.window?.rootViewController?.dismiss(animated: true)
         self.view.window?.makeToast("초기화되었습니다! 다마고치를 다시 선택해주세요!")
     }
 }

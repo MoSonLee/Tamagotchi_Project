@@ -13,40 +13,50 @@ class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var damagotchiLabel: UILabel!
     @IBOutlet weak var damagotchiLevel: UILabel!
-    @IBOutlet weak var damagotcjiImage: UIImageView!
+    @IBOutlet weak var damagotchiImage: UIImageView!
     @IBOutlet weak var damagotchiFoodTextField: UITextField!
     @IBOutlet weak var damagatchiWaterTextField: UITextField!
     @IBOutlet weak var damagotchiFoodButton: UIButton!
     @IBOutlet weak var damagotchiWaterButton: UIButton!
-    var damagtochiImageData: UIImage?
+    var tamagtochiImageData: UIImage?
+    var tamagotchiTitlText: String?
+    var tamagotchiDescription: String?
     private var level: Int = 0
     private var rice: Int = 0
     private var water: Int = 0
-    let tamagtochiFirstLevel = 1
-    var index = 0
+    private  let tamagtochiFirstLevel = 1
+    private var index: Int = 0
+    private var messageArray: [String]?
     
-    static var nickName: String = "대장님"
-    private let messageArray: [String] = ["밥 그만줘요 \(nickName)", "물 줘요 \(nickName)", "배불러요 말걸지 마세요 \(nickName)", "밥 시간이에요 \(nickName)"]
+    static var nickName: String = UserDefaults.standard.string(forKey: "nickname") ?? "대장님"
     
-    override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
+        checkDamagotchi()
+        setNickname()
+        setLevel()
         getUserDefaults()
         setLayout()
-        checkDamagotchi()
-        setLevel()
         setDamaghotchiImage()
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidLoad() {
+        UserDefaults.standard.set(false, forKey: "init")
+        self.navigationItem.setHidesBackButton(true, animated: true)
         damagotchiFoodTextField.delegate = self
         damagatchiWaterTextField.delegate = self
         super.viewDidLoad()
     }
     
     @objc
-    func moveToSetting() {
+    private func moveToSetting() {
         let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: "SettingTableViewController") as? SettingTableViewController else { return }
         self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
-    func setNavigationBarUnderLine() {
+    private func setNavigationBarUnderLine() {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.shadowColor = .systemGray
@@ -55,11 +65,10 @@ class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
     }
     
-    func setLayout() {
-        setLevel()
+    private func setLayout() {
         view.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style:.plain, target: self, action: #selector(moveToSetting))
-        messageLabel.text = messageArray.randomElement()
+        messageLabel.text = messageArray!.randomElement()
         messageLabel.numberOfLines = 0
         messageLabel.adjustsFontSizeToFitWidth = true
         navigationItem.rightBarButtonItem?.tintColor = .black
@@ -69,14 +78,13 @@ class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
         damagotchiFoodTextField.keyboardType = .decimalPad
         messageImage.image = UIImage(named: "bubble")
         messageLabel.textAlignment = .center
-        damagotchiLabel.text =  UserDefaults.standard.string(forKey: "tamagotchiName")
+        damagotchiLabel.text = tamagotchiTitlText
         damagotchiLabel.textAlignment = .center
         damagotchiLabel.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
         damagotchiLabel.layer.borderWidth = 1
         damagotchiLabel.font = .preferredFont(forTextStyle: .callout, compatibleWith: .none)
         damagotchiLabel.layer.cornerRadius = 3
         damagotchiLabel.adjustsFontSizeToFitWidth = true
-        damagotcjiImage.image = damagtochiImageData
         damagotchiLevel.text = ("LV\(level) · 밥알\(rice)개 · 물방울\(water)개")
         damagotchiLevel.textAlignment = .center
         damagotchiLabel.font = .systemFont(ofSize: 14)
@@ -90,7 +98,11 @@ class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
         damagotchiFoodButton.tintColor = .systemGray
         damagotchiFoodButton.setImage(UIImage(named: "water"), for: .normal)
         damagotchiFoodButton.setTitle("밥먹기", for: .normal)
+        damagotchiFoodButton.layer.borderWidth = 1
+        damagotchiFoodButton.layer.cornerRadius = 3
         damagotchiWaterButton.tintColor = .systemGray
+        damagotchiWaterButton.layer.borderWidth = 1
+        damagotchiWaterButton.layer.cornerRadius = 3
         damagotchiWaterButton.setTitle("물먹기", for: .normal)
         setNavigationBarUnderLine()
     }
@@ -110,8 +122,9 @@ class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
         textedRice = Int(damagotchiFoodTextField.text!)
         rice += textedRice ?? 1
         setLayout()
-        setDamaghotchiImage()
         setUserDefaults()
+        setLevel()
+        setDamaghotchiImage()
     }
     
     @IBAction func waterButtonTapped(_ sender: UIButton) {
@@ -119,11 +132,12 @@ class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
         textedWater = Int(damagatchiWaterTextField.text!)
         water += textedWater ?? 1
         setLayout()
-        setDamaghotchiImage()
         setUserDefaults()
+        setLevel()
+        setDamaghotchiImage()
     }
     
-    func setLevel() {
+    private func setLevel() {
         switch (rice/5) + water/2 {
         case 0..<20:
             return level = tamagtochiFirstLevel
@@ -150,44 +164,50 @@ class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
         }
     }
     
-    func checkDamagotchi() {
-        let A = UserDefaults.standard.string(forKey: "tamagotchiName")
-        if A == "따근따근 다마고치" {
-            index = 1
-        } else if A == "방실방실 다마고치" {
-            index = 2
-        } else if A == "반짝반짝 다마고치" {
-            index = 3
-        } else { print("오류입니다.") }
-    }
-    
-    func setDamaghotchiImage() {
-        let name = UserDefaults.standard.string(forKey: "tamagotchiName")
-        if name == "따근따근 다마고치" {
+    private func checkDamagotchi() {
+        let name = tamagotchiTitlText
+        if name == "따끈따끈 다마고치" {
             index = 1
         } else if name == "방실방실 다마고치" {
             index = 2
         } else if name == "반짝반짝 다마고치" {
             index = 3
+        } else { print("오류입니다.") }
+    }
+    
+    private func setDamaghotchiImage() {
+        let name = damagotchiLabel.text
+        if name == "따끈따끈 다마고치" {
+            index = 3
+        } else if name == "방실방실 다마고치" {
+            index = 2
+        } else if name == "반짝반짝 다마고치" {
+            index = 3
         } else{ print("오류입니다.") }
+        
         for i in 1...9 {
             if level == i {
-                damagotcjiImage.image = UIImage(named: "\(index)-\(i)")
+                damagotchiImage.image = UIImage(named: "\(index)-\(i)")
             } else if level == 10 {
-                damagotcjiImage.image = UIImage(named: "\(index)-\(9)")
+                damagotchiImage.image = UIImage(named: "\(index)-\(9)")
             }
         }
     }
     
-    func setUserDefaults() {
+    private func setUserDefaults() {
         UserDefaults.standard.set(level, forKey: "level")
         UserDefaults.standard.set(rice, forKey: "rice")
         UserDefaults.standard.set(water, forKey: "water")
     }
     
-    func getUserDefaults() {
+    private func getUserDefaults() {
         level = UserDefaults.standard.integer(forKey: "level")
         rice = UserDefaults.standard.integer(forKey: "rice")
         water = UserDefaults.standard.integer(forKey: "water")
+    }
+    
+    private func setNickname() {
+        messageArray = ["밥 그만줘요 \(DamagotchiMainViewController.nickName)", "물 줘요 \(DamagotchiMainViewController.nickName)", "배불러요 말걸지 마세요 \(DamagotchiMainViewController.nickName)", "밥 시간이에요 \(DamagotchiMainViewController.nickName)"]
+        DamagotchiMainViewController.nickName = UserDefaults.standard.string(forKey: "nickname") ?? "대장님"
     }
 }

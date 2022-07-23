@@ -17,7 +17,10 @@ class PopUpViewController: UIViewController {
     @IBOutlet weak var popUpStartButton: UIButton!
     @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var buttonStackView: UIStackView!
+    
     var tamagotchiImageData: UIImage?
+    var tamagotchiTitlText: String?
+    var tamagotchiDescription: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,17 +32,18 @@ class PopUpViewController: UIViewController {
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
+        UserDefaults.standard.set(false, forKey: "init")
         let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiMainViewController") as? DamagotchiMainViewController else { return }
-        let nav = UINavigationController(rootViewController: vc)
-        vc.damagtochiImageData = tamagotchiImageData
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: true)
+        vc.tamagtochiImageData = tamagotchiImageData
+        vc.tamagotchiTitlText = tamagotchiTitlText
+        vc.tamagotchiDescription = tamagotchiDescription
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setLayout() {
         view.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        popUpLabel.text =  UserDefaults.standard.string(forKey: "tamagotchiName")
+        popUpLabel.text =  tamagotchiTitlText
         popUpLabel.textAlignment = .center
         popUpLabel.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
         popUpLabel.layer.borderWidth = 1
@@ -49,7 +53,7 @@ class PopUpViewController: UIViewController {
         popUpLabel.font = .systemFont(ofSize: 14)
         popUpDividerLabel.addTopBorderWithColor(color: .systemGray, width: 1)
         popUpDividerLabel.text = ""
-        popUpDescriptionLabel.text =  UserDefaults.standard.string(forKey: "tamagochiDescription")
+        popUpDescriptionLabel.text =  tamagotchiDescription
         popUpDescriptionLabel.numberOfLines = 0
         popUpDescriptionLabel.font = .preferredFont(forTextStyle: .callout, compatibleWith: nil)
         popUpDescriptionLabel.font = .systemFont(ofSize: 13)

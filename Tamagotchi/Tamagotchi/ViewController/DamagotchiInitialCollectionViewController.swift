@@ -11,6 +11,7 @@ class DamagotchiInitialCollectionViewController: UICollectionViewController {
     
     private var tamagotchiList = MainTamagotchi()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationTitle()
@@ -28,14 +29,19 @@ class DamagotchiInitialCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController else { return }
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .overFullScreen
-        vc.tamagotchiImageData = tamagotchiList.tamagotchi[indexPath.row].tamagotchiImage
-        self.present(nav, animated: true)
-        UserDefaults.standard.set(tamagotchiList.tamagotchi[indexPath.row].tamagotchiName, forKey: "tamagotchiName")
-        UserDefaults.standard.set(tamagotchiList.tamagotchi[indexPath.row].tamagotchiDescription, forKey: "tamagochiDescription")
+        if indexPath.row < 3 {
+            let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
+            guard let vc = sb.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController else { return }
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .overFullScreen
+            vc.tamagotchiImageData = tamagotchiList.tamagotchi[indexPath.row].tamagotchiImage
+            vc.tamagotchiTitlText = tamagotchiList.tamagotchi[indexPath.row].tamagotchiName
+            vc.tamagotchiDescription = tamagotchiList.tamagotchi[indexPath.row].tamagotchiDescription
+            UserDefaults.standard.set(indexPath.row, forKey: "row")
+            self.present(nav, animated: true)
+        } else {
+            view.makeToast("아직 준비중입니다! 조금만 기다려주세요!!")
+        }
     }
     
     private func setNavigationTitle() {
