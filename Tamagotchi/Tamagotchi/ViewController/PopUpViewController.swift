@@ -17,7 +17,7 @@ class PopUpViewController: UIViewController {
     @IBOutlet weak var popUpStartButton: UIButton!
     @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var buttonStackView: UIStackView!
-    private var tamagotchiList = MainTamagotchi()
+    var tamagotchiImageData: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,20 +32,13 @@ class PopUpViewController: UIViewController {
         let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiMainViewController") as? DamagotchiMainViewController else { return }
         let nav = UINavigationController(rootViewController: vc)
+        vc.damagtochiImageData = tamagotchiImageData
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true)
     }
     
-    func getImage() -> UIImage? {
-        if let imageData = UserDefaults.standard.value(forKey: "damagotchiImage") as? Data{
-            if let imageFromData = UIImage(data: imageData) {
-                return imageFromData
-            }
-        }
-        return nil
-    }
-    
     func setLayout() {
+        view.backgroundColor = UIColor(white: 1, alpha: 0.5)
         popUpLabel.text =  UserDefaults.standard.string(forKey: "tamagotchiName")
         popUpLabel.textAlignment = .center
         popUpLabel.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
@@ -61,8 +54,7 @@ class PopUpViewController: UIViewController {
         popUpDescriptionLabel.font = .preferredFont(forTextStyle: .callout, compatibleWith: nil)
         popUpDescriptionLabel.font = .systemFont(ofSize: 13)
         popUpDescriptionLabel.textAlignment = .center
-        popupImage.image = getImage()
-        view.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        popupImage.image = tamagotchiImageData
         popUpView.layer.cornerRadius = 30
         popUpView.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
         popUpCancelButton.setTitle("취소", for: .normal)

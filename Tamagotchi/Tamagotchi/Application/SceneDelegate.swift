@@ -12,17 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        window = UIWindow(windowScene: scene as! UIWindowScene)
-        let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
-        
-        if  UserDefaults.standard.string(forKey: "tamagotchiName") == "" {
-            guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiMainViewController") as? DamagotchiMainViewController else { return }
-            window?.rootViewController = vc
-        } else {
-            guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else { return }
-            window?.rootViewController = vc
-        }
-        window?.makeKeyAndVisible()
+        guard let _ = (scene as? UIWindowScene) else { return }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

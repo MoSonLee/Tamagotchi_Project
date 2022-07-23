@@ -32,19 +32,14 @@ class DamagotchiInitialCollectionViewController: UICollectionViewController {
         guard let vc = sb.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController else { return }
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .overFullScreen
+        vc.tamagotchiImageData = tamagotchiList.tamagotchi[indexPath.row].tamagotchiImage
         self.present(nav, animated: true)
         UserDefaults.standard.set(tamagotchiList.tamagotchi[indexPath.row].tamagotchiName, forKey: "tamagotchiName")
         UserDefaults.standard.set(tamagotchiList.tamagotchi[indexPath.row].tamagotchiDescription, forKey: "tamagochiDescription")
-        setImage(image: tamagotchiList.tamagotchi[indexPath.row].tamagotchiImage!)
-        
     }
     
     private func setNavigationTitle() {
         navigationItem.title = "다마고치 선택하기"
+        navigationItem.leftBarButtonItem?.tintColor = .systemGray
     }
-    
-    func setImage(image : UIImage) {
-        UserDefaults.standard.set(image.jpegData(compressionQuality: 100), forKey: "damagotchiImage")
-    }
-    
 }

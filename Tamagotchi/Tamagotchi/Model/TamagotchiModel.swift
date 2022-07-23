@@ -13,3 +13,4 @@ struct Tamagotchi {
     var tamagotchiName: String?
     var tamagotchiDescription: String?
 }
+

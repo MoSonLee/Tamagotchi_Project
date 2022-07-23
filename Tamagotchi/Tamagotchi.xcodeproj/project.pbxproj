@@ -11,6 +11,10 @@
 		772FC11E288AF91C00995A63 /* DamagotchiMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772FC11D288AF91C00995A63 /* DamagotchiMainViewController.swift */; };
 		772FC121288B207B00995A63 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 772FC120288B207B00995A63 /* Toast */; };
 		772FC127288B238400995A63 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 772FC126288B238400995A63 /* IQKeyboardManagerSwift */; };
+		7784C5DA288C18190007BB1D /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7784C5D9288C18190007BB1D /* SettingTableViewController.swift */; };
+		7784C5DE288C18700007BB1D /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7784C5DD288C18700007BB1D /* SettingTableViewCell.swift */; };
+		7784C5E0288C1A120007BB1D /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7784C5DF288C1A120007BB1D /* SettingModel.swift */; };
+		7784C5E2288C476C0007BB1D /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7784C5E1288C476C0007BB1D /* ChangeNameViewController.swift */; };
 		77BC9B9E288AB00F0081E069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9B9D288AB00F0081E069 /* AppDelegate.swift */; };
 		77BC9BA0288AB00F0081E069 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9B9F288AB00F0081E069 /* SceneDelegate.swift */; };
 		77BC9BA7288AB00F0081E069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77BC9BA6288AB00F0081E069 /* Assets.xcassets */; };
@@ -27,6 +31,10 @@
 /* Begin PBXFileReference section */
 		772FC11B288AF5AD00995A63 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
 		772FC11D288AF91C00995A63 /* DamagotchiMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamagotchiMainViewController.swift; sourceTree = "<group>"; };
+		7784C5D9288C18190007BB1D /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		7784C5DD288C18700007BB1D /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		7784C5DF288C1A120007BB1D /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		7784C5E1288C476C0007BB1D /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 		77BC9B9A288AB00F0081E069 /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77BC9B9D288AB00F0081E069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77BC9B9F288AB00F0081E069 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +100,8 @@
 				77BC9BBC288AB2370081E069 /* DamagotchiInitialCollectionViewController.swift */,
 				77BC9BC8288ACA880081E069 /* PopUpViewController.swift */,
 				772FC11D288AF91C00995A63 /* DamagotchiMainViewController.swift */,
+				7784C5D9288C18190007BB1D /* SettingTableViewController.swift */,
+				7784C5E1288C476C0007BB1D /* ChangeNameViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -111,6 +121,7 @@
 			children = (
 				77BC9BC0288AB9910081E069 /* MainTamagotchiModel.swift */,
 				77BC9BC2288AB9C80081E069 /* TamagotchiModel.swift */,
+				7784C5DF288C1A120007BB1D /* SettingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -119,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				77BC9BBE288AB2630081E069 /* DamagotchiInitialCollectionViewCell.swift */,
+				7784C5DD288C18700007BB1D /* SettingTableViewCell.swift */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -233,10 +245,14 @@
 				77BC9B9E288AB00F0081E069 /* AppDelegate.swift in Sources */,
 				77BC9BC1288AB9910081E069 /* MainTamagotchiModel.swift in Sources */,
 				77BC9BBF288AB2630081E069 /* DamagotchiInitialCollectionViewCell.swift in Sources */,
+				7784C5DE288C18700007BB1D /* SettingTableViewCell.swift in Sources */,
+				7784C5E0288C1A120007BB1D /* SettingModel.swift in Sources */,
 				77BC9BC3288AB9C80081E069 /* TamagotchiModel.swift in Sources */,
+				7784C5DA288C18190007BB1D /* SettingTableViewController.swift in Sources */,
 				77BC9BA0288AB00F0081E069 /* SceneDelegate.swift in Sources */,
 				77BC9BC9288ACA880081E069 /* PopUpViewController.swift in Sources */,
 				772FC11C288AF5AD00995A63 /* UIVIew+Extension.swift in Sources */,
+				7784C5E2288C476C0007BB1D /* ChangeNameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
