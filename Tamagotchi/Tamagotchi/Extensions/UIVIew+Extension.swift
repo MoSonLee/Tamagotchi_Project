@@ -35,4 +35,8 @@ extension UIView {
         border.frame = CGRect(x:0, y:0, width:width, height:self.frame.size.height)
         self.layer.addSublayer(border)
     }
+    
+    func setViewColor() {
+        self.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+    }
 }

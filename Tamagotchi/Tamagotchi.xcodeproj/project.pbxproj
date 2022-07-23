@@ -15,6 +15,9 @@
 		7784C5DE288C18700007BB1D /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7784C5DD288C18700007BB1D /* SettingTableViewCell.swift */; };
 		7784C5E0288C1A120007BB1D /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7784C5DF288C1A120007BB1D /* SettingModel.swift */; };
 		7784C5E2288C476C0007BB1D /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7784C5E1288C476C0007BB1D /* ChangeNameViewController.swift */; };
+		7784C5E4288CA4B80007BB1D /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7784C5E3288CA4B80007BB1D /* UIButton+Extension.swift */; };
+		7784C5E6288CA55A0007BB1D /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7784C5E5288CA55A0007BB1D /* UITextField+Extension.swift */; };
+		7784C5E8288CA6A70007BB1D /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7784C5E7288CA6A70007BB1D /* UILabel+Extension.swift */; };
 		77BC9B9E288AB00F0081E069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9B9D288AB00F0081E069 /* AppDelegate.swift */; };
 		77BC9BA0288AB00F0081E069 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC9B9F288AB00F0081E069 /* SceneDelegate.swift */; };
 		77BC9BA7288AB00F0081E069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77BC9BA6288AB00F0081E069 /* Assets.xcassets */; };
@@ -35,6 +38,9 @@
 		7784C5DD288C18700007BB1D /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		7784C5DF288C1A120007BB1D /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		7784C5E1288C476C0007BB1D /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
+		7784C5E3288CA4B80007BB1D /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		7784C5E5288CA55A0007BB1D /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		7784C5E7288CA6A70007BB1D /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		77BC9B9A288AB00F0081E069 /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77BC9B9D288AB00F0081E069 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77BC9B9F288AB00F0081E069 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +146,9 @@
 			children = (
 				77BC9BC4288AC0C70081E069 /* UICollectionView+Extension.swift */,
 				772FC11B288AF5AD00995A63 /* UIVIew+Extension.swift */,
+				7784C5E3288CA4B80007BB1D /* UIButton+Extension.swift */,
+				7784C5E5288CA55A0007BB1D /* UITextField+Extension.swift */,
+				7784C5E7288CA6A70007BB1D /* UILabel+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -239,14 +248,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7784C5E8288CA6A70007BB1D /* UILabel+Extension.swift in Sources */,
 				77BC9BBD288AB2370081E069 /* DamagotchiInitialCollectionViewController.swift in Sources */,
 				77BC9BC5288AC0C70081E069 /* UICollectionView+Extension.swift in Sources */,
 				772FC11E288AF91C00995A63 /* DamagotchiMainViewController.swift in Sources */,
 				77BC9B9E288AB00F0081E069 /* AppDelegate.swift in Sources */,
 				77BC9BC1288AB9910081E069 /* MainTamagotchiModel.swift in Sources */,
+				7784C5E6288CA55A0007BB1D /* UITextField+Extension.swift in Sources */,
 				77BC9BBF288AB2630081E069 /* DamagotchiInitialCollectionViewCell.swift in Sources */,
 				7784C5DE288C18700007BB1D /* SettingTableViewCell.swift in Sources */,
 				7784C5E0288C1A120007BB1D /* SettingModel.swift in Sources */,
+				7784C5E4288CA4B80007BB1D /* UIButton+Extension.swift in Sources */,
 				77BC9BC3288AB9C80081E069 /* TamagotchiModel.swift in Sources */,
 				7784C5DA288C18190007BB1D /* SettingTableViewController.swift in Sources */,
 				77BC9BA0288AB00F0081E069 /* SceneDelegate.swift in Sources */,

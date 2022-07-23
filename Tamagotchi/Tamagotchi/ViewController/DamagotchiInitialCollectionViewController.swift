@@ -37,7 +37,6 @@ class DamagotchiInitialCollectionViewController: UICollectionViewController {
             vc.tamagotchiImageData = tamagotchiList.tamagotchi[indexPath.row].tamagotchiImage
             vc.tamagotchiTitlText = tamagotchiList.tamagotchi[indexPath.row].tamagotchiName
             vc.tamagotchiDescription = tamagotchiList.tamagotchi[indexPath.row].tamagotchiDescription
-            UserDefaults.standard.set(indexPath.row, forKey: "row")
             self.present(nav, animated: true)
         } else {
             view.makeToast("아직 준비중입니다! 조금만 기다려주세요!!")

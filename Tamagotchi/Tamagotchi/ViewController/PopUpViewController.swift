@@ -43,28 +43,21 @@ class PopUpViewController: UIViewController {
     
     func setLayout() {
         view.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        popUpLabel.text =  tamagotchiTitlText
-        popUpLabel.textAlignment = .center
-        popUpLabel.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
-        popUpLabel.layer.borderWidth = 1
-        popUpLabel.font = .preferredFont(forTextStyle: .callout, compatibleWith: .none)
-        popUpLabel.layer.cornerRadius = 3
-        popUpLabel.adjustsFontSizeToFitWidth = true
-        popUpLabel.font = .systemFont(ofSize: 14)
+        popUpLabel.setViewColor()
+        popUpView.setViewColor()
+        popUpLabel.setLabel(tamagotchiTitlText ?? "")
+        popUpDescriptionLabel.setLabelWithoutAdjust(tamagotchiDescription ?? "")
+        
         popUpDividerLabel.addTopBorderWithColor(color: .systemGray, width: 1)
         popUpDividerLabel.text = ""
-        popUpDescriptionLabel.text =  tamagotchiDescription
-        popUpDescriptionLabel.numberOfLines = 0
-        popUpDescriptionLabel.font = .preferredFont(forTextStyle: .callout, compatibleWith: nil)
-        popUpDescriptionLabel.font = .systemFont(ofSize: 13)
-        popUpDescriptionLabel.textAlignment = .center
+        
+        
         popupImage.image = tamagotchiImageData
         popUpView.layer.cornerRadius = 30
-        popUpView.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
-        popUpCancelButton.setTitle("취소", for: .normal)
-        popUpCancelButton.tintColor = .darkGray
-        popUpStartButton.setTitle("시작하기", for: .normal)
-        popUpStartButton.tintColor = .darkGray
+        
+        popUpCancelButton.setPopUpButton("취소")
+        popUpStartButton.setPopUpButton("시작하기")
+        
         buttonStackView.addTopBorderWithColor(color: .lightGray, width: 1)
         popUpCancelButton.addRightBorderWithColor(color: .lightGray, width: 1)
     }
