@@ -10,19 +10,24 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    let userDefaults = UserDefaults.standard
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = ( scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
+        //        window = UIWindow(frame: UIScreen.main.bounds)
         let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
-        if UserDefaults.standard.string(forKey: "tamaName")?.isEmpty == false {
+        
+        if userDefaults.bool(forKey: "init")  {
             guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiMainViewController") as? DamagotchiMainViewController else { return }
-            window?.rootViewController = UINavigationController(rootViewController: vc)
+            self.window?.rootViewController = UINavigationController(rootViewController: vc)
+            vc.reloadInputViews()
+            print("A")
         } else {
             guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else { return }
-            
-            window?.rootViewController = UINavigationController(rootViewController: vc)
+            self.window?.rootViewController = UINavigationController(rootViewController: vc)
         }
-        window?.makeKeyAndVisible()
+        self.window?.makeKeyAndVisible()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -52,7 +57,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-    
-    
 }
 

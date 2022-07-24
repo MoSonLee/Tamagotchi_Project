@@ -7,7 +7,8 @@
 
 import UIKit
 
-class DamagotchiInitialCollectionViewCell: UICollectionViewCell {    
+class DamagotchiInitialCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var mainTamagotchiImage: UIImageView!
     @IBOutlet weak var mainTamagotchiLabel: UILabel!
     

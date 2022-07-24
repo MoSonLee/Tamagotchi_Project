@@ -6,41 +6,48 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
-class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
+final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
     
-    @IBOutlet weak var messageImage: UIImageView!
-    @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var damagotchiLabel: UILabel!
-    @IBOutlet weak var damagotchiLevel: UILabel!
-    @IBOutlet weak var damagotchiImage: UIImageView!
-    @IBOutlet weak var damagotchiFoodTextField: UITextField!
-    @IBOutlet weak var damagatchiWaterTextField: UITextField!
-    @IBOutlet weak var damagotchiFoodButton: UIButton!
-    @IBOutlet weak var damagotchiWaterButton: UIButton!
+    @IBOutlet weak private var messageImage: UIImageView!
+    @IBOutlet weak private var messageLabel: UILabel!
+    @IBOutlet weak private var damagotchiLabel: UILabel!
+    @IBOutlet weak private var damagotchiLevel: UILabel!
+    @IBOutlet weak private var damagotchiImage: UIImageView!
+    @IBOutlet weak private var damagotchiFoodTextField: UITextField!
+    @IBOutlet weak private var damagatchiWaterTextField: UITextField!
+    @IBOutlet weak private var damagotchiFoodButton: UIButton!
+    @IBOutlet weak private var damagotchiWaterButton: UIButton!
     
     var tamagtochiImageData: UIImage?
     var tamagotchiTitlText: String?
     var tamagotchiDescription: String?
-    var level: Int = 1
+    
+    private var level: Int = 1
     private var rice: Int = 0
     private var water: Int = 0
     private var index: Int = 0
     private var messageArray: [String]?
     private  let tamagtochiFirstLevel = 1
+    private let keybord = IQKeyboardManager.shared
+    private let userDefaults = UserDefaults.standard
     
     static var nickName: String = UserDefaults.standard.string(forKey: "nickname") ?? "대장님"
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(true)
+        UserDefaults.standard.set(true, forKey: "init")
         getUserDefaults()
         setNavigaiton()
         setLevel()
         setDamaghotchiImage()
+        setDamagotchiLevel()
     }
     
     override func viewDidLoad() {
         setLayout()
+        setNickname()
         self.navigationItem.setHidesBackButton(true, animated: true)
         damagotchiFoodTextField.delegate = self
         damagatchiWaterTextField.delegate = self
@@ -83,7 +90,9 @@ class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
         damagotchiFoodButton.setButton("밥먹기")
         damagotchiWaterButton.setButton("물먹기")
         checkDamagotchi()
-        setNickname()
+        
+        keybord.enable = true
+        keybord.enableAutoToolbar = false
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -114,6 +123,10 @@ class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
         setUserDefaults()
         setLevel()
         setDamaghotchiImage()
+    }
+    
+    @IBAction func keybordDismiss(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     private func setLevel() {
@@ -174,15 +187,15 @@ class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
     }
     
     private func setUserDefaults() {
-        UserDefaults.standard.set(level, forKey: "level")
-        UserDefaults.standard.set(rice, forKey: "rice")
-        UserDefaults.standard.set(water, forKey: "water")
+        userDefaults.set(level, forKey: "level")
+        userDefaults.set(rice, forKey: "rice")
+        userDefaults.set(water, forKey: "water")
     }
     
     private func getUserDefaults() {
-        level = UserDefaults.standard.integer(forKey: "level")
-        rice = UserDefaults.standard.integer(forKey: "rice")
-        water = UserDefaults.standard.integer(forKey: "water")
+        level = userDefaults.integer(forKey: "level")
+        rice = userDefaults.integer(forKey: "rice")
+        water = userDefaults.integer(forKey: "water")
     }
     
     private func setNickname() {

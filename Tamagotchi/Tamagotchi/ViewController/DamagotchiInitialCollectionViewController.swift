@@ -7,10 +7,10 @@
 
 import UIKit
 
-class DamagotchiInitialCollectionViewController: UICollectionViewController {
+final class DamagotchiInitialCollectionViewController: UICollectionViewController {
     
-    private var tamagotchiList = MainTamagotchi()
-    
+    private let tamagotchiList = MainTamagotchi()
+    private let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +30,13 @@ class DamagotchiInitialCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row < 3 {
+            setUserDefaults(indexPath.row)
+            
             let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
             guard let vc = sb.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController else { return }
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .overFullScreen
             vc.tamagotchiImageData = tamagotchiList.tamagotchi[indexPath.row].tamagotchiImage
-            UserDefaults.standard.set(tamagotchiList.tamagotchi[indexPath.row].tamagotchiName, forKey: "tamaName")
-            UserDefaults.standard.set(tamagotchiList.tamagotchi[indexPath.row].tamagotchiDescription, forKey: "tamaDescription")
             vc.tamagotchiTitlText = tamagotchiList.tamagotchi[indexPath.row].tamagotchiName
             vc.tamagotchiDescription = tamagotchiList.tamagotchi[indexPath.row].tamagotchiDescription
             self.present(nav, animated: true)
@@ -48,5 +48,10 @@ class DamagotchiInitialCollectionViewController: UICollectionViewController {
     private func setNavigationTitle() {
         navigationItem.title = "다마고치 선택하기"
         navigationItem.leftBarButtonItem?.tintColor = .systemGray
+    }
+    
+    private func setUserDefaults(_ data: Int) {
+        userDefaults.set(tamagotchiList.tamagotchi[data].tamagotchiName, forKey: "tamaName")
+        userDefaults.set(tamagotchiList.tamagotchi[data].tamagotchiDescription, forKey: "tamaDescription")
     }
 }

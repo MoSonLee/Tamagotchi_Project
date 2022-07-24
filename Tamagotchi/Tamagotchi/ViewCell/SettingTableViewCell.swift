@@ -8,11 +8,12 @@
 import UIKit
 
 class SettingTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var settingFirstImage: UIImageView!
     @IBOutlet weak var settingTextLabel: UILabel!
     @IBOutlet weak var settingRightButton: UIButton!
-    let settingModel = Setting()
+    
+    var settingModel = Setting()
     
     func configureCell(_ data: Int) {
         settingTextLabel.text = settingModel.settingTextList[data]

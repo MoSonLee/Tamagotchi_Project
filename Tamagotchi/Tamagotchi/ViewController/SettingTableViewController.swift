@@ -8,8 +8,10 @@
 import UIKit
 import Toast
 
-class SettingTableViewController: UITableViewController {
-    let settingModel = Setting()
+final class SettingTableViewController: UITableViewController {
+    
+    private let settingModel = Setting()
+    private let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +19,7 @@ class SettingTableViewController: UITableViewController {
     }
     
     @objc
-    func dismissView() {
+    private func dismissView() {
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -33,6 +35,7 @@ class SettingTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
         let data = indexPath.row
         cell.configureCell(data)
+        
         return cell
     }
     
@@ -49,7 +52,7 @@ class SettingTableViewController: UITableViewController {
         } else if indexPath.row == 2 {
             let alert =  UIAlertController(title: "데이터초기화", message: "정말 다시 처음부터 시작하실 건가용?", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "아니오", style: .default, handler: nil)
-            let ok = UIAlertAction(title: "네", style: .default, handler: { _ in
+            let ok = UIAlertAction(title: "네", style: .default, handler: { _  in
                 self.resetData()
             })
             alert.addAction(cancel)
@@ -58,24 +61,26 @@ class SettingTableViewController: UITableViewController {
         }
     }
     
-    func setNavigationItems() {
+    private func setNavigationItems() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style:.plain, target: self, action: #selector(dismissView))
         navigationItem.leftBarButtonItem?.tintColor = .black
         navigationItem.title = "설정"
         view.backgroundColor =  UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
     }
     
-    func resetData() {
-        UserDefaults.standard.set(true, forKey: "init")
-        for forKey in UserDefaults.standard.dictionaryRepresentation().keys {
-            UserDefaults.standard.removeObject(forKey: forKey.description)
+    private func resetData() {
+        userDefaults.set(false, forKey: "init")
+        for forKey in userDefaults.dictionaryRepresentation().keys {
+            userDefaults.removeObject(forKey: forKey.description)
         }
         self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         self.view.window?.makeToast("초기화되었습니다! 다마고치를 다시 선택해주세요!")
         //강제적 코드 ㅠㅠ
-        let storyboard = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-        vc.navigationItem.setHidesBackButton(true, animated: true)
+        if userDefaults.string(forKey: "tamaName") == nil {
+            let storyboard = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
+            vc.navigationItem.setHidesBackButton(true, animated: true)
+        }
     }
 }

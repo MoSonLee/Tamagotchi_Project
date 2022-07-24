@@ -7,16 +7,16 @@
 
 import UIKit
 
-class PopUpViewController: UIViewController {
+final class PopUpViewController: UIViewController {
     
-    @IBOutlet weak var popupImage: UIImageView!
-    @IBOutlet weak var popUpLabel: UILabel!
-    @IBOutlet weak var popUpDescriptionLabel: UILabel!
-    @IBOutlet weak var popUpDividerLabel: UILabel!
-    @IBOutlet weak var popUpCancelButton: UIButton!
-    @IBOutlet weak var popUpStartButton: UIButton!
-    @IBOutlet weak var popUpView: UIView!
-    @IBOutlet weak var buttonStackView: UIStackView!
+    @IBOutlet weak private var popupImage: UIImageView!
+    @IBOutlet weak private var popUpLabel: UILabel!
+    @IBOutlet weak private var popUpDescriptionLabel: UILabel!
+    @IBOutlet weak private var popUpDividerLabel: UILabel!
+    @IBOutlet weak private var popUpCancelButton: UIButton!
+    @IBOutlet weak private var popUpStartButton: UIButton!
+    @IBOutlet weak private var popUpView: UIView!
+    @IBOutlet weak private var buttonStackView: UIStackView!
     
     var tamagotchiImageData: UIImage?
     var tamagotchiTitlText: String?
@@ -40,7 +40,7 @@ class PopUpViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func setLayout() {
+    private func setLayout() {
         view.backgroundColor = UIColor(white: 1, alpha: 0.5)
         popUpLabel.setViewColor()
         popUpView.setViewColor()
