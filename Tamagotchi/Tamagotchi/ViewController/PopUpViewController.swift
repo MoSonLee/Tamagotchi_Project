@@ -32,7 +32,6 @@ class PopUpViewController: UIViewController {
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        UserDefaults.standard.set(false, forKey: "init")
         let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiMainViewController") as? DamagotchiMainViewController else { return }
         vc.tamagtochiImageData = tamagotchiImageData
@@ -47,18 +46,13 @@ class PopUpViewController: UIViewController {
         popUpView.setViewColor()
         popUpLabel.setLabel(tamagotchiTitlText ?? "")
         popUpDescriptionLabel.setLabelWithoutAdjust(tamagotchiDescription ?? "")
-        
         popUpDividerLabel.addTopBorderWithColor(color: .systemGray, width: 1)
         popUpDividerLabel.text = ""
-        
-        
         popupImage.image = tamagotchiImageData
         popUpView.layer.cornerRadius = 30
-        
         popUpCancelButton.setPopUpButton("취소")
+        popUpCancelButton.backgroundColor = .lightGray
         popUpStartButton.setPopUpButton("시작하기")
-        
         buttonStackView.addTopBorderWithColor(color: .lightGray, width: 1)
-        popUpCancelButton.addRightBorderWithColor(color: .lightGray, width: 1)
     }
 }

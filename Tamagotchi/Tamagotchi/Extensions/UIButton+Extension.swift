@@ -21,6 +21,5 @@ extension UIButton {
         self.tintColor = .darkGray
         self.tintColor = .darkGray
         self.addTopBorderWithColor(color: .lightGray, width: 1)
-        self.addRightBorderWithColor(color: .lightGray, width: 1)
     }
 }

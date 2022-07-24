@@ -10,6 +10,7 @@ import Toast
 
 class SettingTableViewController: UITableViewController {
     let settingModel = Setting()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItems()
@@ -46,7 +47,7 @@ class SettingTableViewController: UITableViewController {
             self.navigationController?.navigationBar.tintColor = .black
             self.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 2 {
-            let alert =  UIAlertController(title: "데이터초기화.", message: "정말 다시 처음부터 시작하실 건가용?", preferredStyle: .alert)
+            let alert =  UIAlertController(title: "데이터초기화", message: "정말 다시 처음부터 시작하실 건가용?", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "아니오", style: .default, handler: nil)
             let ok = UIAlertAction(title: "네", style: .default, handler: { _ in
                 self.resetData()
@@ -66,11 +67,15 @@ class SettingTableViewController: UITableViewController {
     
     func resetData() {
         UserDefaults.standard.set(true, forKey: "init")
-        UserDefaults.standard.removeObject(forKey: "level")
-        UserDefaults.standard.removeObject(forKey: "rice")
-        UserDefaults.standard.removeObject(forKey: "water")
-        UserDefaults.standard.removeObject(forKey: "nickname")
-        self.view.window?.rootViewController?.dismiss(animated: true)
+        for forKey in UserDefaults.standard.dictionaryRepresentation().keys {
+            UserDefaults.standard.removeObject(forKey: forKey.description)
+        }
+        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         self.view.window?.makeToast("초기화되었습니다! 다마고치를 다시 선택해주세요!")
+        //강제적 코드 ㅠㅠ
+        let storyboard = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+        vc.navigationItem.setHidesBackButton(true, animated: true)
     }
 }

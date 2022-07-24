@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = ( scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
-        if !UserDefaults.standard.bool(forKey: "init") {
+        if UserDefaults.standard.string(forKey: "tamaName")?.isEmpty == false {
             guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiMainViewController") as? DamagotchiMainViewController else { return }
             window?.rootViewController = UINavigationController(rootViewController: vc)
         } else {

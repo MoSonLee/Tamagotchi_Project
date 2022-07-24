@@ -35,6 +35,8 @@ class DamagotchiInitialCollectionViewController: UICollectionViewController {
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .overFullScreen
             vc.tamagotchiImageData = tamagotchiList.tamagotchi[indexPath.row].tamagotchiImage
+            UserDefaults.standard.set(tamagotchiList.tamagotchi[indexPath.row].tamagotchiName, forKey: "tamaName")
+            UserDefaults.standard.set(tamagotchiList.tamagotchi[indexPath.row].tamagotchiDescription, forKey: "tamaDescription")
             vc.tamagotchiTitlText = tamagotchiList.tamagotchi[indexPath.row].tamagotchiName
             vc.tamagotchiDescription = tamagotchiList.tamagotchi[indexPath.row].tamagotchiDescription
             self.present(nav, animated: true)

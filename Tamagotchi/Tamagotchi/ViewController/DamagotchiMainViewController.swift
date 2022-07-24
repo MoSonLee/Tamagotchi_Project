@@ -18,29 +18,29 @@ class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
     @IBOutlet weak var damagatchiWaterTextField: UITextField!
     @IBOutlet weak var damagotchiFoodButton: UIButton!
     @IBOutlet weak var damagotchiWaterButton: UIButton!
+    
     var tamagtochiImageData: UIImage?
     var tamagotchiTitlText: String?
     var tamagotchiDescription: String?
     var level: Int = 1
     private var rice: Int = 0
     private var water: Int = 0
-    private  let tamagtochiFirstLevel = 1
     private var index: Int = 0
     private var messageArray: [String]?
+    private  let tamagtochiFirstLevel = 1
     
     static var nickName: String = UserDefaults.standard.string(forKey: "nickname") ?? "대장님"
     
     override func viewWillAppear(_ animated: Bool) {
-        checkDamagotchi()
-        setLevel()
-        setNickname()
-        setLayout()
-        setDamaghotchiImage()
         super.viewWillAppear(animated)
+        getUserDefaults()
+        setNavigaiton()
+        setLevel()
+        setDamaghotchiImage()
     }
     
     override func viewDidLoad() {
-        getUserDefaults()
+        setLayout()
         self.navigationItem.setHidesBackButton(true, animated: true)
         damagotchiFoodTextField.delegate = self
         damagatchiWaterTextField.delegate = self
@@ -82,6 +82,8 @@ class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
         
         damagotchiFoodButton.setButton("밥먹기")
         damagotchiWaterButton.setButton("물먹기")
+        checkDamagotchi()
+        setNickname()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -189,7 +191,7 @@ class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate {
     }
     
     private func setMsessageLabel() {
-        messageLabel.text = messageArray!.randomElement()
+        messageLabel.text = messageArray?.randomElement() ?? "안녕하세용"
         messageLabel.numberOfLines = 0
         messageLabel.adjustsFontSizeToFitWidth = true
         messageLabel.textAlignment = .center

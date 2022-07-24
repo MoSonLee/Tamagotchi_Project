@@ -10,13 +10,13 @@ import UIKit
 
 extension UILabel {
     func setLabel(_ data: String) {
-        self.text = data
         self.textAlignment = .center
         self.layer.borderWidth = 1
         self.font = .preferredFont(forTextStyle: .callout, compatibleWith: .none)
         self.layer.cornerRadius = 3
         self.adjustsFontSizeToFitWidth = true
         self.font = .systemFont(ofSize: 13)
+        self.text = UserDefaults.standard.string(forKey: "tamaName")
     }
     
     func setLabelWithoutAdjust(_ data: String) {

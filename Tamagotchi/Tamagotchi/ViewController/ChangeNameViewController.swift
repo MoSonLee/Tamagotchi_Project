@@ -11,10 +11,6 @@ class ChangeNameViewController: UIViewController {
     
     @IBOutlet weak var userNameTextField: UITextField!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
