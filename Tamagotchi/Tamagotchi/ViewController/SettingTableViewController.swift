@@ -75,7 +75,7 @@ final class SettingTableViewController: UITableViewController {
         }
         self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         self.view.window?.makeToast("초기화되었습니다! 다마고치를 다시 선택해주세요!")
-        //강제적 코드 ㅠㅠ
+        //강제적 코드
         if userDefaults.string(forKey: "tamaName") == nil {
             let storyboard = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
             guard let vc = storyboard.instantiateViewController(withIdentifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else { return }

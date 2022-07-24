@@ -13,9 +13,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let userDefaults = UserDefaults.standard
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let scene = ( scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: scene)
-        //        window = UIWindow(frame: UIScreen.main.bounds)
         let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
         
         if userDefaults.bool(forKey: "init")  {

@@ -200,7 +200,7 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     
     private func setNickname() {
         messageArray = ["밥 그만줘요 \(DamagotchiMainViewController.nickName)", "물 줘요 \(DamagotchiMainViewController.nickName)", "배불러요 말걸지 마세요 \(DamagotchiMainViewController.nickName)", "밥 시간이에요 \(DamagotchiMainViewController.nickName)"]
-        DamagotchiMainViewController.nickName = UserDefaults.standard.string(forKey: "nickname") ?? "대장님"
+        DamagotchiMainViewController.nickName = userDefaults.string(forKey: "nickname") ?? "대장님"
     }
     
     private func setMsessageLabel() {
