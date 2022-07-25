@@ -6,7 +6,7 @@
 //
 
 import UIKit
- 
+
 extension UITextField {
     func setTextField(_ text: String) {
         self.textAlignment = .center

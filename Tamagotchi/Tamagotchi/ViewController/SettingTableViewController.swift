@@ -61,7 +61,6 @@ final class SettingTableViewController: UITableViewController {
             let alert =  UIAlertController(title: "데이터초기화", message: "정말 다시 처음부터 시작하실 건가용?", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "아니오", style: .default, handler: nil)
             let ok = UIAlertAction(title: "네", style: .default, handler: { _  in
-                print("AA")
                 self.resetData()
             })
             alert.addAction(cancel)
@@ -82,12 +81,9 @@ final class SettingTableViewController: UITableViewController {
         for forKey in userDefaults.dictionaryRepresentation().keys {
             userDefaults.removeObject(forKey: forKey.description)
         }
-        guard let DamagotchiInitialCollectionViewController = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil).instantiateViewController(identifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else{
-            return
-        }
-        self.changeRootViewController(DamagotchiInitialCollectionViewController)
+        guard let vc = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil).instantiateViewController(identifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else{ return }
+        let nav = UINavigationController(rootViewController: vc)
+        self.changeRootViewController(nav)
         self.view.window?.makeToast("초기화되었습니다! 다마고치를 다시 선택해주세요!")
-        print("AA")
     }
 }
-

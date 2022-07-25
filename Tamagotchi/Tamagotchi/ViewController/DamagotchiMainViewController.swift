@@ -158,7 +158,7 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
             index = 2
         } else if name == "반짝반짝 다마고치" {
             index = 3
-        } else { print("오류입니다.") }
+        } else {}
     }
     
     private func setDamaghotchiImage() {
@@ -169,7 +169,7 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
             index = 2
         } else if name == "반짝반짝 다마고치" {
             index = 3
-        } else{ print("오류입니다.") }
+        } else{}
         
         for i in 1...9 {
             if level == i {

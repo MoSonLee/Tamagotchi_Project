@@ -44,7 +44,7 @@ final class PopUpViewController: UIViewController {
         view.backgroundColor = UIColor(white: 1, alpha: 0.5)
         popUpLabel.setViewColor()
         popUpView.setViewColor()
-        popUpLabel.setLabel(tamagotchiTitlText ?? "")
+        popUpLabel.text = tamagotchiTitlText
         popUpDescriptionLabel.setLabelWithoutAdjust(tamagotchiDescription ?? "")
         popUpDividerLabel.addTopBorderWithColor(color: .systemGray, width: 1)
         popUpDividerLabel.text = ""
