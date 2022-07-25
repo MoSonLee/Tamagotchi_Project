@@ -82,15 +82,12 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
         setMsessageLabel()
         damagotchiLabel.setLabel(tamagotchiTitlText ?? "")
         setDamagotchiLevel()
-        
         damagotchiFoodTextField.setTextField("밥주세용")
         damagatchiWaterTextField.setTextField("물주세용")
         damagatchiWaterTextField.addBottomBorderWithColor(color: .systemGray, width: 1)
-        
         damagotchiFoodButton.setButton("밥먹기")
         damagotchiWaterButton.setButton("물먹기")
         checkDamagotchi()
-        
         keybord.enable = true
         keybord.enableAutoToolbar = false
     }
@@ -109,9 +106,9 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
         var textedRice: Int?
         textedRice = Int(damagotchiFoodTextField.text!)
         rice += textedRice ?? 1
+        setLevel()
         setLayout()
         setUserDefaults()
-        setLevel()
         setDamaghotchiImage()
     }
     
@@ -119,9 +116,9 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
         var textedWater: Int?
         textedWater = Int(damagatchiWaterTextField.text!)
         water += textedWater ?? 1
+        setLevel()
         setLayout()
         setUserDefaults()
-        setLevel()
         setDamaghotchiImage()
     }
     
