@@ -28,9 +28,8 @@ final class ChangeNameViewController: UIViewController {
             view.makeToast("닉네임을 입력해주세요")
         } else {
             userDefaults.set(userNameTextField.text!, forKey: "nickname")
-//            DamagotchiMainViewController.nickName = userNameTextField.text!
             self.navigationController?.popViewController(animated: true)
-            self.view.window?.makeToast("이름이 변경되었습니다! 뒤로가기를 누르면 확인가능합니다!")
+            self.view.window?.makeToast("이름이 변경되었습니다!")
         }
     }
     

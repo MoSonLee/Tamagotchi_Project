@@ -18,7 +18,6 @@ class SettingTableViewCell: UITableViewCell {
     func configureCell(_ data: Int) {
         settingTextLabel.text = settingModel.settingTextList[data]
         settingFirstImage.image = settingModel.settingFirstImage[data]
-        settingRightButton.setTitle(settingModel.settingRighButtonText[data], for: .normal)
         settingRightButton.setImage(settingModel.settingRightButton, for: .normal)
         settingRightButton.semanticContentAttribute = .forceRightToLeft
         settingRightButton.tintColor = .systemGray

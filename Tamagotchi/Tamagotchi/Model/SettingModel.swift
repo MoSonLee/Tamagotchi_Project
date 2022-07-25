@@ -9,11 +9,10 @@ import UIKit
 
 struct Setting {
     var settingTextList = ["내 이름 설정하기", "다마고치 변경하기", "데이터 초기화"]
+    var settingRightButton = UIImage(systemName: "chevron.right")
     var settingFirstImage = [
         UIImage(systemName: "pencil"),
         UIImage(systemName: "moon.fill"),
         UIImage(systemName: "arrow.clockwise")
     ]
-    var settingRightButton = UIImage(systemName: "chevron.right")
-    var settingRighButtonText = ["\(UserDefaults.standard.string(forKey: "nickname") ?? "대장님") ", "", ""]
 }

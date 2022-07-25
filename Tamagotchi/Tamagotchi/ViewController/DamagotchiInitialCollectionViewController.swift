@@ -34,11 +34,11 @@ final class DamagotchiInitialCollectionViewController: UICollectionViewControlle
             
             let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
             guard let vc = sb.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController else { return }
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .overFullScreen
             vc.tamagotchiImageData = tamagotchiList.tamagotchi[indexPath.row].tamagotchiImage
             vc.tamagotchiTitlText = tamagotchiList.tamagotchi[indexPath.row].tamagotchiName
             vc.tamagotchiDescription = tamagotchiList.tamagotchi[indexPath.row].tamagotchiDescription
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .overFullScreen
             self.present(nav, animated: true)
         } else {
             view.makeToast("아직 준비중입니다! 조금만 기다려주세요!!")

@@ -14,8 +14,8 @@ final class SettingTableViewController: UITableViewController {
     private let userDefaults = UserDefaults.standard
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tableView.reloadData()
         super.viewWillAppear(true)
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -39,8 +39,11 @@ final class SettingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
         let data = indexPath.row
+        cell.settingRightButton.setTitle("", for: .normal)
         cell.configureCell(data)
-        
+        if data == 0 {
+            cell.settingRightButton.setTitle(userDefaults.string(forKey: "nickname") ?? "대장님", for: .normal)
+        }
         return cell
     }
     
@@ -58,6 +61,7 @@ final class SettingTableViewController: UITableViewController {
             let alert =  UIAlertController(title: "데이터초기화", message: "정말 다시 처음부터 시작하실 건가용?", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "아니오", style: .default, handler: nil)
             let ok = UIAlertAction(title: "네", style: .default, handler: { _  in
+                print("AA")
                 self.resetData()
             })
             alert.addAction(cancel)
@@ -80,12 +84,6 @@ final class SettingTableViewController: UITableViewController {
         }
         self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         self.view.window?.makeToast("초기화되었습니다! 다마고치를 다시 선택해주세요!")
-        // 뷰를 쌓는 강제적 코드
-        if userDefaults.string(forKey: "tamaName") == nil {
-            let storyboard = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
-            vc.navigationItem.setHidesBackButton(true, animated: true)
-        }
+        print("AA")
     }
 }

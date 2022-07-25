@@ -94,7 +94,7 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
         if textField == self.damagotchiFoodTextField  && string.count > 0 {
             let numberOnly = NSCharacterSet.decimalDigits
             let strValid = numberOnly.contains(UnicodeScalar.init(string)!)
-            return strValid && text.count <= 10
+            return strValid && text.count <= 9
         }
         return true
     }
