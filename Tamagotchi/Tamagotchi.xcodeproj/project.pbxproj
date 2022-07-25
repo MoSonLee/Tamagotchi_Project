@@ -11,6 +11,7 @@
 		772FC11E288AF91C00995A63 /* DamagotchiMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772FC11D288AF91C00995A63 /* DamagotchiMainViewController.swift */; };
 		772FC121288B207B00995A63 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 772FC120288B207B00995A63 /* Toast */; };
 		772FC127288B238400995A63 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 772FC126288B238400995A63 /* IQKeyboardManagerSwift */; };
+		7777D5E3288E78BD001A829E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7777D5E2288E78BD001A829E /* UIViewController+Extension.swift */; };
 		7784C5DA288C18190007BB1D /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7784C5D9288C18190007BB1D /* SettingTableViewController.swift */; };
 		7784C5DE288C18700007BB1D /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7784C5DD288C18700007BB1D /* SettingTableViewCell.swift */; };
 		7784C5E0288C1A120007BB1D /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7784C5DF288C1A120007BB1D /* SettingModel.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		772FC11B288AF5AD00995A63 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
 		772FC11D288AF91C00995A63 /* DamagotchiMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamagotchiMainViewController.swift; sourceTree = "<group>"; };
+		7777D5E2288E78BD001A829E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		7784C5D9288C18190007BB1D /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		7784C5DD288C18700007BB1D /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		7784C5DF288C1A120007BB1D /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				7784C5E3288CA4B80007BB1D /* UIButton+Extension.swift */,
 				7784C5E5288CA55A0007BB1D /* UITextField+Extension.swift */,
 				7784C5E7288CA6A70007BB1D /* UILabel+Extension.swift */,
+				7777D5E2288E78BD001A829E /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7777D5E3288E78BD001A829E /* UIViewController+Extension.swift in Sources */,
 				7784C5E8288CA6A70007BB1D /* UILabel+Extension.swift in Sources */,
 				77BC9BBD288AB2370081E069 /* DamagotchiInitialCollectionViewController.swift in Sources */,
 				77BC9BC5288AC0C70081E069 /* UICollectionView+Extension.swift in Sources */,

@@ -52,7 +52,7 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     }
     
     @objc
-    private func moveToSetting() {
+    private func pushSetting() {
         let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: "SettingTableViewController") as? SettingTableViewController else { return }
         self.navigationController?.pushViewController(vc, animated: true)
@@ -66,7 +66,7 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
         navBarAppearance.shadowImage = UIImage()
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style:.plain, target: self, action: #selector(moveToSetting))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style:.plain, target: self, action: #selector(pushSetting))
         navigationItem.rightBarButtonItem?.tintColor = .black
         navigationItem.title = userDefaults.string(forKey: "nickname") ?? "대장님" + "의 다마고치"
     }

@@ -82,8 +82,12 @@ final class SettingTableViewController: UITableViewController {
         for forKey in userDefaults.dictionaryRepresentation().keys {
             userDefaults.removeObject(forKey: forKey.description)
         }
-        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+        guard let DamagotchiInitialCollectionViewController = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil).instantiateViewController(identifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else{
+            return
+        }
+        self.changeRootViewController(DamagotchiInitialCollectionViewController)
         self.view.window?.makeToast("초기화되었습니다! 다마고치를 다시 선택해주세요!")
         print("AA")
     }
 }
+
