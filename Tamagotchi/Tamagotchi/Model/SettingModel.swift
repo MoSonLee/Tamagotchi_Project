@@ -15,5 +15,5 @@ struct Setting {
         UIImage(systemName: "arrow.clockwise")
     ]
     var settingRightButton = UIImage(systemName: "chevron.right")
-    var settingRighButtonText = ["\(DamagotchiMainViewController.nickName) ", "", ""]
+    var settingRighButtonText = ["\(UserDefaults.standard.string(forKey: "nickname") ?? "대장님") ", "", ""]
 }

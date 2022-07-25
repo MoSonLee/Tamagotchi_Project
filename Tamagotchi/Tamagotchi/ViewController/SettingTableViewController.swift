@@ -13,6 +13,11 @@ final class SettingTableViewController: UITableViewController {
     private let settingModel = Setting()
     private let userDefaults = UserDefaults.standard
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+        super.viewWillAppear(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationItems()
@@ -75,7 +80,7 @@ final class SettingTableViewController: UITableViewController {
         }
         self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         self.view.window?.makeToast("초기화되었습니다! 다마고치를 다시 선택해주세요!")
-        //강제적 코드
+        // 뷰를 쌓는 강제적 코드
         if userDefaults.string(forKey: "tamaName") == nil {
             let storyboard = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
             guard let vc = storyboard.instantiateViewController(withIdentifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else { return }

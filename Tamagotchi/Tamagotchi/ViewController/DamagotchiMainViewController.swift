@@ -33,8 +33,6 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     private let keybord = IQKeyboardManager.shared
     private let userDefaults = UserDefaults.standard
     
-    static var nickName: String = UserDefaults.standard.string(forKey: "nickname") ?? "대장님"
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         UserDefaults.standard.set(true, forKey: "init")
@@ -47,7 +45,6 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     
     override func viewDidLoad() {
         setLayout()
-        setNickname()
         self.navigationItem.setHidesBackButton(true, animated: true)
         damagotchiFoodTextField.delegate = self
         damagatchiWaterTextField.delegate = self
@@ -71,7 +68,7 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style:.plain, target: self, action: #selector(moveToSetting))
         navigationItem.rightBarButtonItem?.tintColor = .black
-        navigationItem.title = DamagotchiMainViewController.nickName + "의 다마고치"
+        navigationItem.title = userDefaults.string(forKey: "nickname") ?? "대장님" + "의 다마고치"
     }
     
     private func setLayout() {
@@ -195,12 +192,8 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
         water = userDefaults.integer(forKey: "water")
     }
     
-    private func setNickname() {
-        messageArray = ["밥 그만줘요 \(DamagotchiMainViewController.nickName)", "물 줘요 \(DamagotchiMainViewController.nickName)", "배불러요 말걸지 마세요 \(DamagotchiMainViewController.nickName)", "밥 시간이에요 \(DamagotchiMainViewController.nickName)"]
-        DamagotchiMainViewController.nickName = userDefaults.string(forKey: "nickname") ?? "대장님"
-    }
-    
     private func setMsessageLabel() {
+        messageArray = ["밥 그만줘요", "물 줘요", "배불러요 말걸지 마세요", "밥 시간이에요", "물배찼어요", "집에 가고싶어요"]
         messageLabel.text = messageArray?.randomElement() ?? "안녕하세용"
         messageLabel.numberOfLines = 0
         messageLabel.adjustsFontSizeToFitWidth = true

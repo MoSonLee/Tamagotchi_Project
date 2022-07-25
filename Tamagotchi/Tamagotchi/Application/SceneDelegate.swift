@@ -18,8 +18,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if userDefaults.bool(forKey: "init")  {
             guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiMainViewController") as? DamagotchiMainViewController else { return }
             self.window?.rootViewController = UINavigationController(rootViewController: vc)
-            vc.reloadInputViews()
-            print("A")
         } else {
             guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else { return }
             self.window?.rootViewController = UINavigationController(rootViewController: vc)
