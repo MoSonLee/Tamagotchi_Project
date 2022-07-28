@@ -15,7 +15,8 @@ final class DamagotchiInitialCollectionViewController: UICollectionViewControlle
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationTitle()
-        collectionView.collectionViewLayout = collectionView.setCoolectionViewLayout(tamagotchiList.tamagotchi.count)
+        collectionView.backgroundColor = .backgroundDefaultcolor
+        collectionView.collectionViewLayout = collectionView.setCollectionViewLayout()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -31,7 +32,6 @@ final class DamagotchiInitialCollectionViewController: UICollectionViewControlle
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row < 3 {
             setUserDefaults(indexPath.row)
-            
             let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
             guard let vc = sb.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController else { return }
             vc.tamagotchiImageData = tamagotchiList.tamagotchi[indexPath.row].tamagotchiImage

@@ -49,23 +49,16 @@ final class SettingTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let storyboard = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
-            guard let vc = storyboard.instantiateViewController(withIdentifier: "ChangeNameViewController") as? ChangeNameViewController else { return }
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChangeNameViewController") as? ChangeNameViewController else { return }
             self.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 1 {
-            let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
-            guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else { return }
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else { return }
             self.navigationController?.navigationBar.tintColor = .black
             self.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 2 {
-            let alert =  UIAlertController(title: "데이터초기화", message: "정말 다시 처음부터 시작하실 건가용?", preferredStyle: .alert)
-            let cancel = UIAlertAction(title: "아니오", style: .default, handler: nil)
-            let ok = UIAlertAction(title: "네", style: .default, handler: { _  in
+            self.showAlert(title: "데이터초기화", message: "정말 다시 처음부터 시작하실 건가용?") { _ in
                 self.resetData()
-            })
-            alert.addAction(cancel)
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
+            }
         }
     }
     
@@ -85,5 +78,16 @@ final class SettingTableViewController: UITableViewController {
         let nav = UINavigationController(rootViewController: vc)
         self.changeRootViewController(nav)
         self.view.window?.makeToast("초기화되었습니다! 다마고치를 다시 선택해주세요!")
+    }
+}
+
+extension UIViewController {
+    func showAlert(title: String, message: String, handler: ((UIAlertAction) -> Void)? = nil) {
+        let alert =  UIAlertController(title: title , message: message, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "아니오", style: .default, handler: nil)
+        let ok = UIAlertAction(title: "네", style: .default, handler: handler)
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
     }
 }

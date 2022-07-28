@@ -73,7 +73,7 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     
     private func setLayout() {
         setNavigaiton()
-        view.setViewColor()
+        view.backgroundColor = .backgroundDefaultcolor
         damagotchiFoodTextField.addBottomBorderWithColor(color: .systemGray, width: 1)
         messageImage.image = UIImage(named: "bubble")
         setMsessageLabel()
