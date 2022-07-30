@@ -49,7 +49,6 @@ final class SettingTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         switch indexPath.row {
         case 0:
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: ChangeNameViewController.identifier) as? ChangeNameViewController else { return }
@@ -64,6 +63,7 @@ final class SettingTableViewController: UITableViewController {
             self.showAlert(title: "데이터초기화", message: "정말 다시 처음부터 시작하실 건가용?") { _ in
                 self.resetData()
             }
+            
         default:
             return
         }
@@ -73,7 +73,7 @@ final class SettingTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: .chevornLeftImage, style:.plain, target: self, action: #selector(dismissView))
         navigationItem.leftBarButtonItem?.tintColor = .black
         navigationItem.title = "설정"
-        view.backgroundColor =  .backgroundDefaultcolor
+        view.backgroundColor = .backgroundDefaultcolor
     }
     
     private func resetData() {
