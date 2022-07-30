@@ -24,10 +24,11 @@ final class ChangeNameViewController: UIViewController {
     
     @objc
     private  func setNickName() {
-        if userNameTextField.text!.isEmpty {
+        guard let name = userNameTextField.text else { return }
+        if name.isEmpty {
             view.makeToast("닉네임을 입력해주세요")
         } else {
-            userDefaults.set(userNameTextField.text!, forKey: "nickname")
+            userDefaults.set(name, forKey: "nickname")
             self.navigationController?.popViewController(animated: true)
             self.view.window?.makeToast("이름이 변경되었습니다!")
         }
@@ -39,6 +40,6 @@ final class ChangeNameViewController: UIViewController {
         navigationItem.leftBarButtonItem?.tintColor = .black
         self.navigationItem.rightBarButtonItem  = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(setNickName))
         navigationItem.rightBarButtonItem?.tintColor = .black
-        navigationItem.title = "\(userDefaults.string(forKey: "nickname") ?? "대장님") 이름 정하기"
+        navigationItem.title = "\(userDefaults.string(forKey: "nickname") ?? DamagotchiMainViewController.defaultNickName) 이름 정하기"
     }
 }

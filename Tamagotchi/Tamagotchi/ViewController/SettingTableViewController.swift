@@ -33,7 +33,7 @@ final class SettingTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        settingModel.settingTextList.count
+        settingModel.setting.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,7 +42,7 @@ final class SettingTableViewController: UITableViewController {
         cell.settingRightButton.setTitle("", for: .normal)
         cell.configureCell(data)
         if data == 0 {
-            cell.settingRightButton.setTitle(userDefaults.string(forKey: "nickname") ?? "대장님", for: .normal)
+            cell.settingRightButton.setTitle(userDefaults.string(forKey: "nickname") ?? DamagotchiMainViewController.defaultNickName, for: .normal)
         }
         return cell
     }

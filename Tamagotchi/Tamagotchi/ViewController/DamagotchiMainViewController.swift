@@ -33,6 +33,11 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     private let keybord = IQKeyboardManager.shared
     private let userDefaults = UserDefaults.standard
     
+    static var defaultNickName = "대장님"
+    static var level = "level"
+    static var rice = "rice"
+    static var water = "water"
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         UserDefaults.standard.set(true, forKey: "init")
@@ -44,11 +49,11 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         setLayout()
         self.navigationItem.setHidesBackButton(true, animated: true)
         damagotchiFoodTextField.delegate = self
         damagatchiWaterTextField.delegate = self
-        super.viewDidLoad()
     }
     
     @objc
@@ -68,7 +73,7 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style:.plain, target: self, action: #selector(pushSetting))
         navigationItem.rightBarButtonItem?.tintColor = .black
-        navigationItem.title = userDefaults.string(forKey: "nickname") ?? "대장님" + "의 다마고치"
+        navigationItem.title = userDefaults.string(forKey: "nickname") ?? DamagotchiMainViewController.defaultNickName + "의 다마고치"
     }
     
     private func setLayout() {
@@ -124,29 +129,9 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     }
     
     private func setLevel() {
-        switch (rice/5) + water/2 {
-        case 0..<20:
-            return level = 1
-        case 20..<30:
-            return level = tamagtochiFirstLevel + 1
-        case 30..<40:
-            return level = tamagtochiFirstLevel + 2
-        case 40..<50:
-            return level = tamagtochiFirstLevel + 3
-        case 50..<60:
-            return level = tamagtochiFirstLevel + 4
-        case 60..<70:
-            return level = tamagtochiFirstLevel + 5
-        case 70..<80:
-            return level = tamagtochiFirstLevel + 6
-        case 80..<90:
-            return level = tamagtochiFirstLevel + 7
-        case 90..<100:
-            return level = tamagtochiFirstLevel + 8
-        case 100...:
-            return level = tamagtochiFirstLevel + 9
-        default:
-            return
+        level = ((rice/5) + water/2) / 10
+        if level >= 10 {
+            level = 10
         }
     }
     
@@ -158,7 +143,7 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
             index = 2
         } else if name == "반짝반짝 다마고치" {
             index = 3
-        } else {}
+        } else { }
     }
     
     private func setDamaghotchiImage() {
@@ -171,6 +156,9 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
             index = 3
         } else{}
         
+        if level == 0 {
+            damagotchiImage.image = UIImage(named: "\(index)-\(1)")
+        }
         for i in 1...9 {
             if level == i {
                 damagotchiImage.image = UIImage(named: "\(index)-\(i)")
@@ -181,15 +169,15 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     }
     
     private func setUserDefaults() {
-        userDefaults.set(level, forKey: "level")
-        userDefaults.set(rice, forKey: "rice")
-        userDefaults.set(water, forKey: "water")
+        userDefaults.set(level, forKey: DamagotchiMainViewController.level)
+        userDefaults.set(rice, forKey: DamagotchiMainViewController.rice)
+        userDefaults.set(water, forKey: DamagotchiMainViewController.water)
     }
     
     private func getUserDefaults() {
-        level = userDefaults.integer(forKey: "level")
-        rice = userDefaults.integer(forKey: "rice")
-        water = userDefaults.integer(forKey: "water")
+        level = userDefaults.integer(forKey: DamagotchiMainViewController.level)
+        rice = userDefaults.integer(forKey: DamagotchiMainViewController.rice)
+        water = userDefaults.integer(forKey: DamagotchiMainViewController.water)
     }
     
     private func setMsessageLabel() {

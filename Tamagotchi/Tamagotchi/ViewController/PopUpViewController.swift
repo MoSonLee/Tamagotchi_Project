@@ -24,7 +24,7 @@ final class PopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLayout()
+        setPopUpView()
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
@@ -40,7 +40,7 @@ final class PopUpViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func setLayout() {
+    private func setPopUpView() {
         view.backgroundColor = UIColor(white: 1, alpha: 0.5)
         popUpLabel.backgroundColor = .backgroundDefaultcolor
         popUpView.backgroundColor = .backgroundDefaultcolor
