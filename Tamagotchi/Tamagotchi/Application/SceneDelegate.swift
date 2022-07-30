@@ -14,12 +14,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
-        
-        if userDefaults.bool(forKey: "init")  {
-            guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiMainViewController") as? DamagotchiMainViewController else { return }
+        if userDefaults.bool(forKey: .initText)  {
+            guard let vc = sb.instantiateViewController(withIdentifier: DamagotchiMainViewController.identifier) as? DamagotchiMainViewController else { return }
             self.window?.rootViewController = UINavigationController(rootViewController: vc)
         } else {
-            guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiInitialCollectionViewController") as? DamagotchiInitialCollectionViewController else { return }
+            guard let vc = sb.instantiateViewController(withIdentifier: DamagotchiInitialCollectionViewController.identifier) as? DamagotchiInitialCollectionViewController else { return }
             self.window?.rootViewController = UINavigationController(rootViewController: vc)
         }
         self.window?.makeKeyAndVisible()

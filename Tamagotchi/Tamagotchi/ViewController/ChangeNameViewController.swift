@@ -11,10 +11,11 @@ final class ChangeNameViewController: UIViewController {
 
     @IBOutlet private weak var userNameTextField: UITextField!
     private let userDefaults = UserDefaults.standard
+    static var identifier = "ChangeNameViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLayout()
+        setChangeNameView()
     }
     
     @objc
@@ -28,18 +29,18 @@ final class ChangeNameViewController: UIViewController {
         if name.isEmpty {
             view.makeToast("닉네임을 입력해주세요")
         } else {
-            userDefaults.set(name, forKey: "nickname")
+            userDefaults.set(name, forKey: .nickname)
             self.navigationController?.popViewController(animated: true)
             self.view.window?.makeToast("이름이 변경되었습니다!")
         }
     }
     
-    private func setLayout() {
-        view.backgroundColor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style:.plain, target: self, action: #selector(dismissView))
+    private func setChangeNameView() {
+        view.backgroundColor = .backgroundDefaultcolor
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: .chevornLeftImage, style:.plain, target: self, action: #selector(dismissView))
         navigationItem.leftBarButtonItem?.tintColor = .black
         self.navigationItem.rightBarButtonItem  = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(setNickName))
         navigationItem.rightBarButtonItem?.tintColor = .black
-        navigationItem.title = "\(userDefaults.string(forKey: "nickname") ?? DamagotchiMainViewController.defaultNickName) 이름 정하기"
+        navigationItem.title = "\(userDefaults.string(forKey: .nickname) ?? DamagotchiMainViewController.defaultNickName) 이름 정하기"
     }
 }

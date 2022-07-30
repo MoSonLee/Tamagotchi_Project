@@ -9,8 +9,8 @@ import UIKit
 
 struct Setting {
     var setting: [SettingModel] = [
-        SettingModel(settingText: "내 이름 설정하기", settingRightButtonImage: UIImage(systemName: "chevron.right"), settingFirstImage: UIImage(systemName: "pencil")),
-        SettingModel(settingText: "다마고치", settingRightButtonImage: UIImage(systemName: "chevron.right"), settingFirstImage: UIImage(systemName: "moon.fill")),
-        SettingModel(settingText: "데이터 초기화", settingRightButtonImage: UIImage(systemName: "chevron.right"), settingFirstImage: UIImage(systemName: "arrow.clockwise"))
+        SettingModel(settingText: "내 이름 설정하기", settingRightButtonImage: .chevornRightImage, settingFirstImage: UIImage(systemName: "pencil")),
+        SettingModel(settingText: "다마고치 변경하기", settingRightButtonImage: .chevornRightImage, settingFirstImage: UIImage(systemName: "moon.fill")),
+        SettingModel(settingText: "데이터 초기화", settingRightButtonImage: .chevornRightImage, settingFirstImage: UIImage(systemName: "arrow.clockwise"))
     ]
 }

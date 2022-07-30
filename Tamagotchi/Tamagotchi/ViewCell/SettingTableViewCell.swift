@@ -13,7 +13,9 @@ class SettingTableViewCell: UITableViewCell {
     @IBOutlet weak var settingTextLabel: UILabel!
     @IBOutlet weak var settingRightButton: UIButton!
     
-    var settingModel = Setting()
+    static var identifier = "SettingTableViewCell"
+    
+    private lazy var settingModel = Setting()
     
     func configureCell(_ data: Int) {
         settingTextLabel.text = settingModel.setting[data].settingText
@@ -23,6 +25,6 @@ class SettingTableViewCell: UITableViewCell {
         settingRightButton.tintColor = .systemGray
         settingTextLabel.tintColor = .systemGray
         settingFirstImage.tintColor = .systemGray
-        self.backgroundColor =  UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
+        self.backgroundColor =  .backgroundDefaultcolor
     }
 }

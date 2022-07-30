@@ -28,19 +28,21 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     private var rice: Int = 0
     private var water: Int = 0
     private var index: Int = 0
-    private var messageArray: [String]?
-    private  let tamagtochiFirstLevel = 1
+    private var levelText = "level"
+    private var riceText = "rice"
+    private var waterText = "water"
+    private var  messageArray = ["밥 그만줘요", "물 줘요", "배불러요 말걸지 마세요", "밥 시간이에요", "물배찼어요", "집에 가고싶어요"]
+    
+    private let tamagtochiFirstLevel = 1
     private let keybord = IQKeyboardManager.shared
     private let userDefaults = UserDefaults.standard
     
+    static var identifier = "DamagotchiMainViewController"
     static var defaultNickName = "대장님"
-    static var level = "level"
-    static var rice = "rice"
-    static var water = "water"
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        UserDefaults.standard.set(true, forKey: "init")
+        UserDefaults.standard.set(true, forKey: .initText)
         getUserDefaults()
         setNavigaiton()
         setLevel()
@@ -58,10 +60,8 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     
     @objc
     private func pushSetting() {
-        let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: "SettingTableViewController") as? SettingTableViewController else { return }
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: SettingTableViewController.identifier) as? SettingTableViewController else { return }
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     private func setNavigaiton() {
@@ -71,9 +71,9 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
         navBarAppearance.shadowImage = UIImage()
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style:.plain, target: self, action: #selector(pushSetting))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .personCircleImage, style:.plain, target: self, action: #selector(pushSetting))
         navigationItem.rightBarButtonItem?.tintColor = .black
-        navigationItem.title = userDefaults.string(forKey: "nickname") ?? DamagotchiMainViewController.defaultNickName + "의 다마고치"
+        navigationItem.title = userDefaults.string(forKey: .nickname) ?? DamagotchiMainViewController.defaultNickName + "의 다마고치"
     }
     
     private func setLayout() {
@@ -92,16 +92,6 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
         checkDamagotchi()
         keybord.enable = true
         keybord.enableAutoToolbar = false
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        if textField == self.damagotchiFoodTextField  && string.count > 0 {
-            let numberOnly = NSCharacterSet.decimalDigits
-            let strValid = numberOnly.contains(UnicodeScalar.init(string)!)
-            return strValid && text.count <= 9
-        }
-        return true
     }
     
     @IBAction func foodButtonTapped(_ sender: UIButton) {
@@ -169,20 +159,19 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     }
     
     private func setUserDefaults() {
-        userDefaults.set(level, forKey: DamagotchiMainViewController.level)
-        userDefaults.set(rice, forKey: DamagotchiMainViewController.rice)
-        userDefaults.set(water, forKey: DamagotchiMainViewController.water)
+        userDefaults.set(level, forKey: self.levelText)
+        userDefaults.set(rice, forKey: self.riceText)
+        userDefaults.set(water, forKey: self.waterText)
     }
     
     private func getUserDefaults() {
-        level = userDefaults.integer(forKey: DamagotchiMainViewController.level)
-        rice = userDefaults.integer(forKey: DamagotchiMainViewController.rice)
-        water = userDefaults.integer(forKey: DamagotchiMainViewController.water)
+        level = userDefaults.integer(forKey: self.levelText)
+        rice = userDefaults.integer(forKey: self.riceText)
+        water = userDefaults.integer(forKey: self.waterText)
     }
     
     private func setMsessageLabel() {
-        messageArray = ["밥 그만줘요", "물 줘요", "배불러요 말걸지 마세요", "밥 시간이에요", "물배찼어요", "집에 가고싶어요"]
-        messageLabel.text = messageArray?.randomElement() ?? "안녕하세용"
+        messageLabel.text = messageArray.randomElement()
         messageLabel.numberOfLines = 0
         messageLabel.adjustsFontSizeToFitWidth = true
         messageLabel.textAlignment = .center
@@ -191,5 +180,15 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     private func setDamagotchiLevel() {
         damagotchiLevel.text = ("LV\(level) · 밥알\(rice)개 · 물방울\(water)개")
         damagotchiLevel.textAlignment = .center
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        if textField == self.damagotchiFoodTextField  && string.count > 0 {
+            let numberOnly = NSCharacterSet.decimalDigits
+            let strValid = numberOnly.contains(UnicodeScalar.init(string)!)
+            return strValid && text.count <= 3
+        }
+        return true
     }
 }

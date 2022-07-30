@@ -22,6 +22,8 @@ final class PopUpViewController: UIViewController {
     var tamagotchiTitlText: String?
     var tamagotchiDescription: String?
     
+    static var identifier = "PopUpViewController"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setPopUpView()
@@ -32,8 +34,7 @@ final class PopUpViewController: UIViewController {
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        let sb = UIStoryboard(name: "DamagotchiInitialStoryboard", bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: "DamagotchiMainViewController") as? DamagotchiMainViewController else { return }
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: DamagotchiMainViewController.identifier) as? DamagotchiMainViewController else { return }
         vc.tamagtochiImageData = tamagotchiImageData
         vc.tamagotchiTitlText = tamagotchiTitlText
         vc.tamagotchiDescription = tamagotchiDescription

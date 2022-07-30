@@ -11,6 +11,7 @@ class DamagotchiInitialCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var mainTamagotchiImage: UIImageView!
     @IBOutlet weak var mainTamagotchiLabel: UILabel!
+    static var identifier = "DamagotchiInitialCollectionViewCell"
     
     func configureCell(_ data: Tamagotchi) {
         mainTamagotchiLabel.text = data.tamagotchiName

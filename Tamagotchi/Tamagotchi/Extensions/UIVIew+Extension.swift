@@ -40,3 +40,16 @@ extension UIView {
 extension UIColor {
    static let backgroundDefaultcolor = UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
 }
+
+extension UIImage {
+    static let personCircleImage = UIImage(systemName: "person.circle")
+    static let chevornLeftImage = UIImage(systemName: "chevron.left")
+    static let chevornRightImage = UIImage(systemName: "chevron.right")
+    static let pencilImage = UIImage(systemName: "pencil")
+}
+
+extension String {
+    static let nickname = "nickname"
+    static let initText = "init"
+}
+
