@@ -34,12 +34,14 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     private var  messageArray = ["밥 그만줘요", "물 줘요", "배불러요 말걸지 마세요", "밥 시간이에요", "물배찼어요", "집에 가고싶어요"]
     
     private let tamagtochiFirstLevel = 1
-    private let keybord = IQKeyboardManager.shared
-    private let userDefaults = UserDefaults.standard
+    private lazy var keybord = IQKeyboardManager.shared
+    private lazy var userDefaults = UserDefaults.standard
     
-    static var identifier = "DamagotchiMainViewController"
+    static var identifier: String {
+        "DamagotchiMainViewController"
+    }
     static var defaultNickName = "대장님"
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         UserDefaults.standard.set(true, forKey: .initText)
@@ -184,7 +186,7 @@ final class DamagotchiMainViewController: UIViewController ,UITextFieldDelegate 
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        if textField == self.damagotchiFoodTextField  && string.count > 0 {
+        if (textField == self.damagotchiFoodTextField) || (textField == self.damagatchiWaterTextField) && string.count > 0 {
             let numberOnly = NSCharacterSet.decimalDigits
             let strValid = numberOnly.contains(UnicodeScalar.init(string)!)
             return strValid && text.count <= 3

@@ -22,7 +22,9 @@ final class PopUpViewController: UIViewController {
     var tamagotchiTitlText: String?
     var tamagotchiDescription: String?
     
-    static var identifier = "PopUpViewController"
+    static var identifier: String {
+        "PopUpViewController"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

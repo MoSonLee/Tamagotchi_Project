@@ -13,7 +13,9 @@ class SettingTableViewCell: UITableViewCell {
     @IBOutlet weak var settingTextLabel: UILabel!
     @IBOutlet weak var settingRightButton: UIButton!
     
-    static var identifier = "SettingTableViewCell"
+    static var identifier: String {
+        "SettingTableViewCell"
+    }
     
     private lazy var settingModel = Setting()
     

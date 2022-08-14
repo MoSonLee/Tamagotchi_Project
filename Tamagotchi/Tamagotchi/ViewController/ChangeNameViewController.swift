@@ -11,7 +11,9 @@ final class ChangeNameViewController: UIViewController {
 
     @IBOutlet private weak var userNameTextField: UITextField!
     private let userDefaults = UserDefaults.standard
-    static var identifier = "ChangeNameViewController"
+    static var identifier: String {
+        "ChangeNameViewController"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

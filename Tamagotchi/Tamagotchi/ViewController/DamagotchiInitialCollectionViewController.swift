@@ -11,7 +11,9 @@ final class DamagotchiInitialCollectionViewController: UICollectionViewControlle
     
     private lazy var tamagotchiList = MainTamagotchi()
     private let userDefaults = UserDefaults.standard
-    static var identifier = "DamagotchiInitialCollectionViewController"
+    static var identifier: String {
+        "DamagotchiInitialCollectionViewController"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

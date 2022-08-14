@@ -12,7 +12,9 @@ final class SettingTableViewController: UITableViewController {
     
     private lazy var settingModel = Setting()
     private let userDefaults = UserDefaults.standard
-    static var identifier = "SettingTableViewController"
+    static var identifier: String {
+        "SettingTableViewController"
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
